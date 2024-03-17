@@ -45,7 +45,7 @@ public class Invoice {
     }
 
     public int getNumber() {
-      return number;
+        return number;
     }
 
     public Map<Product, Integer> getProducts() {
