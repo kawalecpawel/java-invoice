@@ -124,4 +124,26 @@ public class Invoice {
     public int getNumber() {
         return this.invoiceNumber;
     }
+
+    public String getInvoiceDetails() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Invoice Number: ").append(invoiceNumber).append("\n");
+        int positionCount = 0;
+
+        for (Product product : products2) {
+            sb.append(product.getName()).append(", 1, ").append(product.getPrice()).append("\n");
+            positionCount++;
+        }
+
+        for (Map.Entry<Product, Integer> entry : products.entrySet()) {
+            Product product = entry.getKey();
+            int quantity = entry.getValue();
+            sb.append(product.getName()).append(", ").append(quantity).append(", ").append(product.getPrice()).append("\n");
+            positionCount++;
+        }
+
+        sb.append("Number of positions: ").append(positionCount);
+        return sb.toString();
+    }
+
 }
