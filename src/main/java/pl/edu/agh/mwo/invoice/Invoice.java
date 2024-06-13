@@ -67,7 +67,8 @@ public class Invoice {
             Product product = entry.getKey();
             int quantity = entry.getValue();
 
-            BigDecimal tax = product.getPrice().multiply(product.getTaxPercent()).multiply(BigDecimal.valueOf(quantity));
+            BigDecimal tax = product.getPrice().multiply(product.getTaxPercent())
+                    .multiply(BigDecimal.valueOf(quantity));
             totalTax = totalTax.add(tax);
         }
 
@@ -90,7 +91,8 @@ public class Invoice {
         for (Map.Entry<Product, Integer> entry : products.entrySet()) {
             Product product = entry.getKey();
             int quantity = entry.getValue();
-            BigDecimal grossPrice = product.getPrice().add(product.getPrice().multiply(product.getTaxPercent()));
+            BigDecimal grossPrice = product.getPrice().add(product.getPrice()
+                    .multiply(product.getTaxPercent()));
 
             grossPrice = grossPrice.multiply(BigDecimal.valueOf(quantity));
             totalGrossPrice = totalGrossPrice.add(grossPrice);
