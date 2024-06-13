@@ -117,6 +117,7 @@ public class Invoice {
 
     }
 
+
     public BigDecimal getGrossTotal() {
         return getGrossPrice();
     }
@@ -128,8 +129,8 @@ public class Invoice {
     public String getInvoiceDetails() {
         StringBuilder sb = new StringBuilder();
         sb.append("Invoice Number: ").append(invoiceNumber).append("\n");
-        int positionCount = 0;
 
+        int positionCount = 0;
         for (Product product : products2) {
             sb.append(product.getName()).append(", 1, ").append(product.getPrice()).append("\n");
             positionCount++;
