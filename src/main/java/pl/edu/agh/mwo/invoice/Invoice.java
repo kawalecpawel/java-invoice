@@ -9,8 +9,16 @@ import java.util.Map;
 import pl.edu.agh.mwo.invoice.product.Product;
 
 public class Invoice {
+    private static int invoiceCounter = 0; // Static variable to keep track of invoice numbers
+    private int invoiceNumber;
     private Map<Product, Integer> products = new HashMap<>();
     private Collection<Product> products2 = new ArrayList<>();
+
+
+    public Invoice() {
+        invoiceCounter++;
+        this.invoiceNumber = invoiceCounter;
+    }
 
     public void addProduct(Product product) {
         if (product == null) {
@@ -110,6 +118,7 @@ public class Invoice {
         return getGrossPrice();
     }
 
-    //public int getNumber() {
-   // }
+    public int getNumber() {
+        return this.invoiceNumber;
+    }
 }
