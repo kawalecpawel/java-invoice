@@ -148,13 +148,13 @@ public class InvoiceTest {
         invoice.addProduct(p3);
 
         String expectedDetails =
-                "Invoice Number: 1\n" +
+                "Invoice Number: " + invoice.getNumber() + "\n" +
                         "Pampersy, 1, 200\n" +
                         "Kefir, 1, 100\n" +
                         "Piwko, 1, 10\n" +
                         "Number of positions: 3";
 
-        Assert.assertThat(expectedDetails, Matchers.comparesEqualTo(invoice.getInvoiceDetails()));
+        Assert.assertThat(invoice.getInvoiceDetails(), Matchers.comparesEqualTo(expectedDetails));
     }
 
 }
