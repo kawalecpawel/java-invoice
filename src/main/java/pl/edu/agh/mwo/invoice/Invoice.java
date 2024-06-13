@@ -139,7 +139,8 @@ public class Invoice {
         for (Map.Entry<Product, Integer> entry : products.entrySet()) {
             Product product = entry.getKey();
             int quantity = entry.getValue();
-            sb.append(product.getName()).append(", ").append(quantity).append(", ").append(product.getPrice()).append("\n");
+            sb.append(product.getName()).append(", ").append(quantity).append(", ").
+                    append(product.getPrice()).append("\n");
             positionCount++;
         }
 
