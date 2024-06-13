@@ -35,14 +35,6 @@ public class Invoice {
         for (Product product : this.products2) {
             netPrice = netPrice.add(product.getPrice());
         }
-        //--return netPrice;
-
-        // must be uncommented to pass testInvoiceHasProperSubtotalForManyProducts
-        //must be commented when code below is uncommented
-    //--}
-
-        //--igDecimal netPrice = BigDecimal.ZERO;
-        //--for (Map.Entry<Product, Integer> entry : this.products.entrySet()) {
         for (Map.Entry<Product, Integer> entry : products.entrySet()) {
             Product product = entry.getKey();
             Integer quantity = entry.getValue();
@@ -50,22 +42,10 @@ public class Invoice {
         }
         return netPrice;
 
-        //must be uncommented to pass test testInvoiceSubtotalWithTwoDifferentProducts
-        //must be uncommented to pass test testInvoiceHasPropoerSubtotalWithQuantityMoreThanOne
-        // must be commented when code above is uncommented
     }
 
     public BigDecimal getTax() {
-        /*BigDecimal tax = BigDecimal.ZERO;
-        for (Map.Entry<Product, Integer> entry : this.products.entrySet()) {
-            Product product = entry.getKey();
-            Integer quantity = entry.getValue();
-            BigDecimal taxOfProduct = product.getPrice().multiply(product.getTaxPercent()).multiply(BigDecimal.valueOf(quantity));
-            tax = tax.add(taxOfProduct);
-        }
-        return tax;
-    }*/
-        //must be commented when below code is uncommented
+
 
         BigDecimal totalTax = BigDecimal.ZERO;
 
@@ -78,26 +58,17 @@ public class Invoice {
 
             Product product = entry.getKey();
             int quantity = entry.getValue();
-            //--BigDecimal tax = product.getPrice().multiply(product.getTaxPercent()).multiply(new BigDecimal(quantity));
+
             BigDecimal tax = product.getPrice().multiply(product.getTaxPercent()).multiply(BigDecimal.valueOf(quantity));
             totalTax = totalTax.add(tax);
         }
 
         return totalTax.setScale(2, BigDecimal.ROUND_HALF_UP);
-        //must be uncommented to pass test testInvoiceHasProperTaxValueForManyProduct
+
     }
 
     public BigDecimal getGrossPrice() {
-        /*BigDecimal grossPrice = BigDecimal.ZERO;
-        for (Map.Entry<Product, Integer> entry : this.products.entrySet()) {
-            Product product = entry.getKey();
-            Integer quantity = entry.getValue();
-            grossPrice = grossPrice.add(product.getPriceWithTax().multiply(BigDecimal.valueOf(quantity)));
-        }
-        return grossPrice;*/
 
-        //return getNetPrice().add(getTax());
-        //must be commented when code below is uncommented
 
         BigDecimal totalGrossPrice = BigDecimal.ZERO;
 
@@ -112,7 +83,7 @@ public class Invoice {
             Product product = entry.getKey();
             int quantity = entry.getValue();
             BigDecimal grossPrice = product.getPrice().add(product.getPrice().multiply(product.getTaxPercent()));
-            //--grossPrice = grossPrice.multiply(new BigDecimal(quantity));
+
             grossPrice = grossPrice.multiply(BigDecimal.valueOf(quantity));
             totalGrossPrice = totalGrossPrice.add(grossPrice);
         }
@@ -139,5 +110,3 @@ public class Invoice {
             return getGrossPrice();
         }
 }
-
-//must be uncommented to pass test testInvoiceHasProperTotalValueForManyProduct
