@@ -83,7 +83,8 @@ public class Invoice {
 
 
         for (Product product : products2) {
-            BigDecimal grossPrice = product.getPrice().add(product.getPrice().multiply(product.getTaxPercent()));
+            BigDecimal grossPrice = product.getPrice().add(product.getPrice()
+                    .multiply(product.getTaxPercent()));
             totalGrossPrice = totalGrossPrice.add(grossPrice);
         }
 
