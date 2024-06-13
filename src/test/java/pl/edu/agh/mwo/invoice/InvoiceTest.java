@@ -137,4 +137,24 @@ public class InvoiceTest {
         Assert.assertTrue(new Invoice().getNumber()>0);
     }
 
+    @Test
+    public void testInvoiceDetails() {
+        Product p1 = new TaxFreeProduct("Pampersy", new BigDecimal("200"));
+        Product p2 = new DairyProduct("Kefir", new BigDecimal("100"));
+        Product p3 = new OtherProduct("Piwko", new BigDecimal("10"));
+
+        invoice.addProduct(p1);
+        invoice.addProduct(p2);
+        invoice.addProduct(p3);
+
+        String expectedDetails =
+                "Invoice Number: 1\n" +
+                        "Pampersy, 1, 200\n" +
+                        "Kefir, 1, 100\n" +
+                        "Piwko, 1, 10\n" +
+                        "Number of positions: 3";
+
+        Assert.assertThat(expectedDetails, Matchers.comparesEqualTo(invoice.getInvoiceDetails()));
+    }
+
 }
